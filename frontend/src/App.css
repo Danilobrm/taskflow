@@ -1,0 +1,16 @@
+.App-header {
+  background-color: #ffffff;
+  max-height: 80px;
+  align-items: center;
+  display: flex;
+  gap: 15px;
+  padding: 0 50px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
+}
+
+.header-circle {
+  width: 40px; 
+  height: 40px; 
+  background-color: #5e5e5e;
+  border-radius: 50px;
+}

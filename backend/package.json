@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "api para sistem de gerenciamento de tarefas",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danilobrm/taskflow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Danilobrm/taskflow/issues"
+  },
+  "homepage": "https://github.com/Danilobrm/taskflow#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
