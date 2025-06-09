@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -154,4 +155,145 @@ code {
     color: green;
     font-weight: bold;
     text-align: center;
+=======
+/* General App Styles */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-header {
+  background-color: #282c34;
+  justify-content: space-between;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+}
+
+.header-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #61dafb;
+  margin-right: 15px;
+}
+
+.App-body {
+  display: flex;
+  flex: 1;
+}
+
+/* Sidebar Styles */
+.App-sidebar {
+  background-color: #2c3e50;
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.App-sidebar.open {
+  width: 250px;
+}
+
+.App-sidebar.closed {
+  width: 60px;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 10;
+}
+
+.App-sidebar nav {
+  padding: 20px 0;
+}
+
+.App-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sidebar-item:hover {
+  background-color: #34495e;
+}
+
+.sidebar-item.active {
+  background-color: #3498db;
+}
+
+.sidebar-icon {
+  font-size: 20px;
+  margin-right: 15px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.sidebar-text {
+  white-space: nowrap;
+}
+
+.App-sidebar.closed .sidebar-text {
+  display: none;
+}
+
+.App-sidebar.closed .sidebar-item {
+  justify-content: center;
+  padding: 15px 0;
+}
+
+/* Main Content Styles */
+/* .App-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+} */
+
+.categories-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Transition for content area */
+.App-content {
+  transition: opacity 0.3s ease;
+  flex: 1;
+}
+
+/* Active tab indicator */
+.sidebar-item.active {
+  background-color: #3498db;
+  position: relative;
+}
+
+.sidebar-item.active::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #fff;
+>>>>>>> 3e44f3c9fc6165f1b4106327b5090a9b1d5900e2
 }
