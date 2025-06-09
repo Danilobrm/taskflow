@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "api para sistem de gerenciamento de tarefas",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"

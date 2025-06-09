@@ -15,6 +15,6 @@ const server = createServer((req, res) => {
 });
 
 server.listen(port, 'localhost', () => {
-  console.log('Listening on localhost:3000');
+  console.log('Running onn http://localhost:' + port);
 });
 
