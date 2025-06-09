@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import AddTaskCard from "./AddTaskCard";
-import TaskEditor from "./TaskEditor";
-import TaskCard from "./TaskCard";
+import AddTaskCard from "./add/AddTaskCard";
+import TaskEditor from "./add/TaskEditor";
+import TaskCard from "./card/TaskCard";
 import "./TaskBoard.css";
 
 export default function TaskBoard() {
@@ -37,9 +37,7 @@ export default function TaskBoard() {
     e.preventDefault();
     if (!draggedTask) return;
 
-    const updatedTasks = tasks.map((task) =>
-      task.id === draggedTask.id ? { ...task, status: targetStatus } : task
-    );
+    const updatedTasks = tasks.map((task) => (task.id === draggedTask.id ? { ...task, status: targetStatus } : task));
 
     setTasks(updatedTasks);
     setDraggedTask(null);
@@ -67,11 +65,7 @@ export default function TaskBoard() {
       {showEditor && (
         <div className="editor-overlay">
           <div className="editor-modal">
-            <TaskEditor
-              defaultStatus={editingStatus}
-              onSave={handleSave}
-              onCancel={handleCancel}
-            />
+            <TaskEditor defaultStatus={editingStatus} onSave={handleSave} onCancel={handleCancel} />
           </div>
         </div>
       )}
@@ -90,11 +84,7 @@ export default function TaskBoard() {
             <h3>{status}</h3>
 
             {filteredTasks.map((task) => (
-              <div
-                key={task.id}
-                draggable
-                onDragStart={(e) => handleDragStart(e, task)}
-              >
+              <div key={task.id} draggable onDragStart={(e) => handleDragStart(e, task)}>
                 <TaskCard task={task} onDelete={handleDeleteTask} />
               </div>
             ))}

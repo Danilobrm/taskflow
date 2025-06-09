@@ -1,162 +1,134 @@
-<<<<<<< HEAD
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .App {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f0f2f5;
-}
-
-.App-header {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header-circle {
-    width: 30px;
-    height: 30px;
-    background-color: #bbb;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.taskflow-title {
-    font-size: 24px;
-    font-weight: bold;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
 }
 
 .routes-content {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .auth-container {
-    display: flex;
-    flex-grow: 1;
+  display: flex;
+  flex-grow: 1;
 }
 
 .auth-left-panel {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
 }
 
 .auth-left-panel h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #333;
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .auth-left-panel p {
-    font-size: 1.2em;
-    color: #666;
+  font-size: 1.2em;
+  color: #666;
 }
 
 .auth-right-panel {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
 }
 
 .auth-form-container {
-    background-color: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
 }
 
 .auth-form-container h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
 }
 
 .form-group input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
 }
 
 .auth-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #000;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .auth-button:hover {
-    background-color: #333;
+  background-color: #333;
 }
 
 .auth-links {
-    margin-top: 20px;
-    text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .auth-links a {
-    color: #007bff;
-    text-decoration: none;
-    margin: 0 10px;
+  color: #007bff;
+  text-decoration: none;
+  margin: 0 10px;
 }
 
 .auth-links a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .mensagem {
-    margin-top: 15px;
-    color: green;
-    font-weight: bold;
-    text-align: center;
-=======
-/* General App Styles */
+  margin-top: 15px;
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -184,81 +156,6 @@ code {
 .App-body {
   display: flex;
   flex: 1;
-}
-
-/* Sidebar Styles */
-.App-sidebar {
-  background-color: #2c3e50;
-  color: white;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.App-sidebar.open {
-  width: 250px;
-}
-
-.App-sidebar.closed {
-  width: 60px;
-}
-
-.sidebar-toggle {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 5px;
-  z-index: 10;
-}
-
-.App-sidebar nav {
-  padding: 20px 0;
-}
-
-.App-sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-item {
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.sidebar-item:hover {
-  background-color: #34495e;
-}
-
-.sidebar-item.active {
-  background-color: #3498db;
-}
-
-.sidebar-icon {
-  font-size: 20px;
-  margin-right: 15px;
-  min-width: 20px;
-  text-align: center;
-}
-
-.sidebar-text {
-  white-space: nowrap;
-}
-
-.App-sidebar.closed .sidebar-text {
-  display: none;
-}
-
-.App-sidebar.closed .sidebar-item {
-  justify-content: center;
-  padding: 15px 0;
 }
 
 /* Main Content Styles */
@@ -295,5 +192,4 @@ code {
   height: 100%;
   width: 4px;
   background-color: #fff;
->>>>>>> 3e44f3c9fc6165f1b4106327b5090a9b1d5900e2
 }

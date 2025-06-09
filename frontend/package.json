@@ -9,11 +9,8 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-<<<<<<< HEAD
     "react-router-dom": "^7.6.2",
-=======
     "react-icons": "^5.5.0",
->>>>>>> 3e44f3c9fc6165f1b4106327b5090a9b1d5900e2
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

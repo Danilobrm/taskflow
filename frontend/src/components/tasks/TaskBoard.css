@@ -3,6 +3,7 @@
   justify-content: space-between;
   padding: 20px;
   gap: 20px;
+  flex: 1;
 }
 
 .task-column {
