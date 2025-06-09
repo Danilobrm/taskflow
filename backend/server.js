@@ -1,20 +1,15 @@
+import { createServer } from "node:http";
+import express from "express";
 
-import { createServer } from 'node:http';
-import express from "express"
+const app = express();
+const port = 3001;
 
-const app = express()
-const port = 3001
+app.use(express.json())
 
-app.get('/', (req, res) => {
-  res.send('Olá Mundo!')
-})
-
-const server = createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello World!\n');
+app.get("/", (req, res) => {
+  res.send("Olá Mundo!");
 });
 
-server.listen(port, 'localhost', () => {
-  console.log('Running onn http://localhost:' + port);
+app.listen(port, "localhost", () => {
+  console.log("Running on http://localhost:" + port);
 });
-
