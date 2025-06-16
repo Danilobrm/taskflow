@@ -1,38 +1,61 @@
 import { useState } from "react";
-import "./TaskEditor.css"; // We'll create this CSS file
+import "./TaskEditor.css";
 
-export default function TaskEditor({ onSave, onCancel, defaultStatus }) {
+export default function TaskEditor({ onSave, onCancel, boardId, defaultStatus = "PENDENTE" }) {
   const [taskData, setTaskData] = useState({
     title: "",
     description: "",
-    date: new Date().toISOString().split('T')[0], // Default to today
-    time: "12:00",
-    category: "Trabalho",
-    priority: "média",
-    status: defaultStatus || "PENDENTE"
+    status: defaultStatus,
+    category_id: "",
+    assigned_to: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const categories = ["Trabalho", "Pessoal", "Academia", "Estudos", "Lazer"];
-  const priorities = [
-    { value: "alta", label: "Alta Prioridade" },
-    { value: "média", label: "Média Prioridade" },
-    { value: "baixa", label: "Baixa Prioridade" }
-  ];
   const statuses = ["PENDENTE", "EM ANDAMENTO", "CONCLUÍDO"];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setTaskData(prev => ({ ...prev, [name]: value }));
+    setTaskData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSave({
-      ...taskData,
-      id: Date.now(),
-      // Combine date and time for a complete timestamp if needed
-      fullDate: `${taskData.date}T${taskData.time}:00.000Z`
-    });
+    setLoading(true);
+    setError(null);
+
+    const token = localStorage.getItem("token");
+    const payload = {
+      title: taskData.title,
+      description: taskData.description,
+      status: taskData.status,
+      category_id: taskData.category_id,
+      board_id: boardId,
+      assigned_to: taskData.assigned_to || null,
+    };
+
+    try {
+      const response = await fetch(`http://localhost:3001/api/boards/${boardId}/tasks`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.message || "Erro ao salvar a tarefa");
+      }
+
+      const savedTask = await response.json();
+      onSave(savedTask);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,6 +72,7 @@ export default function TaskEditor({ onSave, onCancel, defaultStatus }) {
               onChange={handleChange}
               placeholder="Título da tarefa"
               required
+              disabled={loading}
             />
           </div>
 
@@ -60,82 +84,52 @@ export default function TaskEditor({ onSave, onCancel, defaultStatus }) {
               onChange={handleChange}
               placeholder="Detalhes da tarefa..."
               rows="4"
+              disabled={loading}
             />
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label>Data*</label>
-              <input
-                type="date"
-                name="date"
-                value={taskData.date}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Hora*</label>
-              <input
-                type="time"
-                name="time"
-                value={taskData.time}
-                onChange={handleChange}
-                required
-              />
-            </div>
+          <div className="form-group">
+            <label>Categoria*</label>
+            <select name="category_id" value={taskData.category_id} onChange={handleChange} required disabled={loading}>
+              {/* {categories.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </option>
+              ))} */}
+            </select>
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label>Categoria</label>
-              <select
-                name="category"
-                value={taskData.category}
-                onChange={handleChange}
-              >
-                {categories.map(cat => (
-                  <option key={cat} value={cat}>{cat}</option>
-                ))}
-              </select>
-            </div>
-
-            <div className="form-group">
-              <label>Prioridade</label>
-              <select
-                name="priority"
-                value={taskData.priority}
-                onChange={handleChange}
-              >
-                {priorities.map(pri => (
-                  <option key={pri.value} value={pri.value}>{pri.label}</option>
-                ))}
-              </select>
-            </div>
+          <div className="form-group">
+            <label>Responsável</label>
+            {/* <select name="assigned_to" value={taskData.assigned_to} onChange={handleChange} disabled={loading}>
+              <option value="">Sem responsável</option>
+              {users.map((user) => (
+                <option key={user.id} value={user.id}>
+                  {user.name}
+                </option>
+              ))}
+            </select> */}
           </div>
 
-          {defaultStatus === undefined && (
-            <div className="form-group">
-              <label>Status</label>
-              <select
-                name="status"
-                value={taskData.status}
-                onChange={handleChange}
-              >
-                {statuses.map(status => (
-                  <option key={status} value={status}>{status}</option>
-                ))}
-              </select>
-            </div>
-          )}
+          <div className="form-group">
+            <label>Status*</label>
+            <select name="status" value={taskData.status} onChange={handleChange} required disabled={loading}>
+              {statuses.map((status) => (
+                <option key={status} value={status}>
+                  {status}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {error && <p className="error-message">{error}</p>}
 
           <div className="form-actions">
-            <button type="button" className="cancel-btn" onClick={onCancel}>
+            <button type="button" className="cancel-btn" onClick={onCancel} disabled={loading}>
               Cancelar
             </button>
-            <button type="submit" className="save-btn">
-              Salvar Tarefa
+            <button type="submit" className="save-btn" disabled={loading || !taskData.title || !taskData.category_id}>
+              {loading ? "Salvando..." : "Salvar Tarefa"}
             </button>
           </div>
         </form>

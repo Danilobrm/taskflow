@@ -18,7 +18,7 @@ function CriarConta() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ nome, email, senha }),
+                body: JSON.stringify({ name: nome, email, password: senha }),
             });
 
             const data = await response.json();
