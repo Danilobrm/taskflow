@@ -1,0 +1,27 @@
+# Arquivos de saída padrão do Robot Framework
+log.html
+report.html
+output.xml
+
+# Qualquer arquivo de log adicional
+*.log
+
+# Arquivos XML ou JSON de saída
+*.xml
+*.json
+
+# Banco de dados temporários (se existirem)
+*.db
+
+# Pasta de resultados (caso você crie uma)
+results/
+output/
+reports/
+
+# Arquivos do VS Code e IDEs
+.vscode/
+*.code-workspace
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
