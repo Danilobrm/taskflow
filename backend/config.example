@@ -3,7 +3,7 @@
 # Supabase Configuration
 SUPABASE_CLIENT_URL=sua_url_do_supabase_aqui
 SUPABASE_PUBLIC_ANON_KEY=sua_chave_anonima_do_supabase_aqui
-
+ 
 # Outras configurações
 PORT=3001
 NODE_ENV=development 

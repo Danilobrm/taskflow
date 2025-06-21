@@ -21,6 +21,28 @@
 .task-title {
     font-size: 1.25rem;
     color: #222;
+    flex: 1;
+    margin-right: 0.5rem;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.edit-icon {
+    cursor: pointer;
+    color: #3b82f6;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+    padding: 0.2rem;
+    border-radius: 4px;
+}
+
+.edit-icon:hover {
+    color: #1d4ed8;
+    background-color: #eff6ff;
 }
 
 .delete-icon {
@@ -28,10 +50,13 @@
     color: #e55353;
     font-size: 1.25rem;
     transition: color 0.2s ease;
+    padding: 0.2rem;
+    border-radius: 4px;
 }
 
 .delete-icon:hover {
     color: #a62828;
+    background-color: #fef2f2;
 }
 
 .task-description {
@@ -41,12 +66,32 @@
     white-space: pre-wrap; /* Preserve line breaks */
 }
 
-.task-info {
-    font-size: 0.85rem;
-    color: #666;
-    margin-bottom: 0.75rem;
+.task-due-info {
     display: flex;
     gap: 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: #666;
+    flex-wrap: wrap;
+}
+
+.task-due-date,
+.task-due-time {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.5rem;
+    background-color: #f3f4f6;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.task-due-date {
+    color: #059669;
+}
+
+.task-due-time {
+    color: #7c3aed;
 }
 
 .task-meta {

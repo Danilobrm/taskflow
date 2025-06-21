@@ -139,6 +139,25 @@
     outline: none;
 }
 
+/* Estilos específicos para campos de data e hora */
+.form-group input[type="date"],
+.form-group input[type="time"] {
+    font-family: inherit;
+    min-height: 38px;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator,
+.form-group input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover,
+.form-group input[type="time"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
 .form-row {
     display: flex;
     gap: 15px;
@@ -146,6 +165,18 @@
 
 .form-row .form-group {
     flex: 1;
+}
+
+/* Responsividade para campos de data/hora */
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-row .form-group {
+        flex: none;
+    }
 }
 
 .form-actions {

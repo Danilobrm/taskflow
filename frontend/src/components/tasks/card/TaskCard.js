@@ -1,13 +1,38 @@
 import { useState, useEffect } from "react";
-import { FiX } from "react-icons/fi"; // For the red "X"
+import { FiX, FiEdit } from "react-icons/fi";
 import "./TaskCard.css";
 
-export default function TaskCard({ task, onDelete }) {
+export default function TaskCard({ task, onDelete, onEdit }) {
     const [category, setCategory] = useState(null);
-    const formattedDate = task.date
-        ? new Date(task.date).toLocaleDateString("pt-BR")
-        : "Data não informada";
-    const formattedTime = task.time || "Hora não informada";
+
+    // Formatação da data e hora de vencimento
+    const formatDueDate = (dueDate) => {
+        if (!dueDate) return null;
+
+        try {
+            // Usar a data diretamente do backend (formato YYYY-MM-DD)
+            const [year, month, day] = dueDate.split("-");
+            return `${day}/${month}/${year}`;
+        } catch (error) {
+            console.error("Erro ao formatar data:", error);
+            return null;
+        }
+    };
+
+    const formatDueTime = (dueTime) => {
+        if (!dueTime) return null;
+
+        try {
+            // Remover milissegundos e mostrar apenas HH:MM
+            return dueTime.split(":").slice(0, 2).join(":");
+        } catch (error) {
+            console.error("Erro ao formatar hora:", error);
+            return null;
+        }
+    };
+
+    const dueDate = formatDueDate(task.due_date);
+    const dueTime = formatDueTime(task.due_time);
 
     // Optional: show status in a colored pill
     const statusColors = {
@@ -50,21 +75,35 @@ export default function TaskCard({ task, onDelete }) {
                 <strong className="task-title">
                     {task.title || "Sem título"}
                 </strong>
-                <FiX
-                    className="delete-icon"
-                    onClick={() => onDelete(task.id)}
-                    title="Excluir tarefa"
-                />
+                <div className="task-actions">
+                    <FiEdit
+                        className="edit-icon"
+                        onClick={() => onEdit(task)}
+                        title="Editar tarefa"
+                    />
+                    <FiX
+                        className="delete-icon"
+                        onClick={() => onDelete(task.id)}
+                        title="Excluir tarefa"
+                    />
+                </div>
             </div>
 
             {task.description && (
                 <p className="task-description">{task.description}</p>
             )}
 
-            <div className="task-info">
-                <span className="task-date">{formattedDate}</span>
-                <span className="task-time">{formattedTime}</span>
-            </div>
+            {/* Data e hora de vencimento */}
+            {(dueDate || dueTime) && (
+                <div className="task-due-info">
+                    {dueDate && (
+                        <span className="task-due-date">📅 {dueDate}</span>
+                    )}
+                    {dueTime && (
+                        <span className="task-due-time">🕐 {dueTime}</span>
+                    )}
+                </div>
+            )}
 
             <div className="task-meta">
                 <span

@@ -99,15 +99,29 @@ router.delete(
 // Tasks (Tarefas)
 router.post(
     "/api/boards/:boardId/tasks",
+    autenticarToken,
     taskController.create.bind(taskController)
 );
 router.get(
     "/api/boards/:boardId/tasks",
+    autenticarToken,
     taskController.listByBoard.bind(taskController)
 );
-router.get("/api/tasks/:id", taskController.get.bind(taskController));
-router.put("/api/tasks/:id", taskController.update.bind(taskController));
-router.delete("/api/tasks/:id", taskController.delete.bind(taskController));
+router.get(
+    "/api/tasks/:id",
+    autenticarToken,
+    taskController.get.bind(taskController)
+);
+router.put(
+    "/api/tasks/:id",
+    autenticarToken,
+    taskController.update.bind(taskController)
+);
+router.delete(
+    "/api/tasks/:id",
+    autenticarToken,
+    taskController.delete.bind(taskController)
+);
 
 // Comments (Comentários em tarefas)
 // router.post("/api/tasks/:taskId/comments", commentController.create.bind(commentController));
