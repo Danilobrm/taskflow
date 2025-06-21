@@ -18,7 +18,7 @@ Cenário 01: Cadastro de um novo usuário
 *** Keywords ***
 #Cenário 01: Cadastro de um novo usuário
 Dado que o usuário não está cadastrado no sistema e acessa a tela de cadastro
-    Delay de Execucção de teste
+    Delay de Execução de teste
     Abrir Navegador
     Clicar no Link "Criar Conta"
 
