@@ -1,7 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
-Resource    recursos/variaveis.robot
-Resource    recursos/palavrasChaves.robot
+Resource    ../recursos/variaveis.robot
+Resource    ../recursos/palavrasChaves.robot
 
 *** Test Cases ***
 Cenário 01: Cadastro de um novo usuário
