@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 import TaskBoard from "../components/tasks/TaskBoard";
 import Categories from "../components/Categories";
+import ProfileManager from "../components/ProfileManager";
 import { LogoutButton } from "../components/buttons/LogoutButton";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/sidebar/Sidebar";
@@ -129,6 +130,8 @@ function Home({ profileId, logout }) {
                 );
             case "categories":
                 return <Categories />;
+            case "profile":
+                return <ProfileManager />;
             case "home":
                 return (
                     <div className="home-content">

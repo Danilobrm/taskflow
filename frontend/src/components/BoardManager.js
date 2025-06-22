@@ -204,4 +204,3 @@ export default function BoardManager({ board, onUpdate, onDelete, onClose }) {
         </div>
     );
 }
- 

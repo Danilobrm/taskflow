@@ -20,13 +20,22 @@ export const autenticarToken =
 router.post("/api/register", authController.register.bind(authController));
 router.post("/api/login", authController.login.bind(authController));
 
-router.get("/api/me", authController.getProfile.bind(authController));
-
-// Users (Usuários)
-// router.get("/api/users", userController.list.bind(userController));
-// router.get("/api/users/:id", userController.get.bind(userController));
-// router.put("/api/users/:id", userController.update.bind(userController));
-// router.delete("/api/users/:id", userController.delete.bind(userController));
+// Perfil do usuário logado
+router.get(
+    "/api/me",
+    autenticarToken,
+    authController.getProfile.bind(authController)
+);
+router.put(
+    "/api/me",
+    autenticarToken,
+    authController.updateProfile.bind(authController)
+);
+router.put(
+    "/api/me/password",
+    autenticarToken,
+    authController.updatePassword.bind(authController)
+);
 
 // Boards (Quadros)
 router.post(

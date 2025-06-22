@@ -110,6 +110,7 @@ export default function TaskBoard({ boardId }) {
         // Atualiza no backend
         try {
             const token = localStorage.getItem("token");
+            const updatedTask = { status: targetStatus };
             const response = await fetch(
                 `http://localhost:3001/api/tasks/${draggedTask.id}`,
                 {
@@ -118,7 +119,7 @@ export default function TaskBoard({ boardId }) {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
-                    body: JSON.stringify({ status: targetStatus }),
+                    body: JSON.stringify(updatedTask),
                 }
             );
 
