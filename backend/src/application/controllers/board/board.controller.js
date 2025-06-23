@@ -28,7 +28,7 @@ export class BoardController {
 
   async list(req, res) {
     const user_id = req.user.id;
-    
+
     try {
       const boards = await this.boardService.list(user_id);
       return res.status(200).json(boards);

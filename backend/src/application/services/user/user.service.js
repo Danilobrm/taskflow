@@ -127,10 +127,10 @@ export class UserService {
         return data;
     }
 
-    async delete(id) {
-        const { error } = await supabase.from("users").delete().eq("id", id);
-
-        if (error) throw new Error("Erro ao deletar usuário: " + error.message);
-        return { message: "Usuário deletado com sucesso" };
-    }
+//     async delete(id) {
+//         const { error } = await supabase.from("users").delete().eq("id", id);
+// 
+//         if (error) throw new Error("Erro ao deletar usuário: " + error.message);
+//         return { message: "Usuário deletado com sucesso" };
+//     }
 }
