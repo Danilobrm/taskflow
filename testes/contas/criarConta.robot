@@ -5,31 +5,31 @@ Resource    ../recursos/palavrasChaves.robot
 
 *** Test Cases ***
 Cenário 01: Cadastro de um novo usuário
-    [Documentation]    Verifica se o usuário consegue se cadastrar com sucesso
-    Dado que o usuário não está cadastrado no sistema e acessa a tela de cadastro
-    E inserir os dados de nome válido "Maria"
-    E inserir os dados de email válido "teste@gmail.com"
-    E inserir os dados de senha válida "Te123@"
+    Dado que o usuário está na tela de login
+    E clica no link "Crie sua conta"
+    E inserir os dados de nome válido "Robot"
+    E inserir os dados de email válido "robot@email.com"
+    E inserir os dados de senha válida "Robot123"
     Quando clicar o botão de “Criar Conta”
     Então o usuário deve ser registrado no sistema e aparecer a mensagem de sucesso "Usuário cadastrado com sucesso!"
     E deve ser redirecionado para a pagina de Login
 
-
 *** Keywords ***
-#Cenário 01: Cadastro de um novo usuário
-Dado que o usuário não está cadastrado no sistema e acessa a tela de cadastro
-    Delay de Execução de teste
+Dado que o usuário está na tela de login
     Abrir Navegador
-    Clicar no Link "Criar Conta"
+    Go To    ${Url}
 
-E inserir os dados de nome válido "Maria"
-    Input Text    ${Campo_Nome}    Maria
+E clica no link "Crie sua conta"
+    Click Element    xpath=//a[contains(.,'Crie sua conta')]
 
-E inserir os dados de email válido "teste@gmail.com"
-    Input Text    ${Campo_Email}    teste@gmail.com
+E inserir os dados de nome válido "Robot"
+    Input Text    ${Campo_Nome}    Robot
 
-E inserir os dados de senha válida "Te123@"
-    Input Text    ${Campo_Senha}    Te123@
+E inserir os dados de email válido "robot@email.com"
+    Input Text    ${Campo_Email}    robot@email.com
+
+E inserir os dados de senha válida "Robot123"
+    Input Text    ${Campo_Senha}    Robot123
 
 Quando clicar o botão de “Criar Conta”
     Clicar no Botão "Criar Conta"
