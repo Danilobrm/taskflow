@@ -25,21 +25,34 @@ export class BoardService {
   async getById(boardId) {
     const { data, error } = await supabase.from("boards").select("*").eq("id", boardId).single();
 
-    if (error) throw new Error("Erro ao buscar quadro: " + error.message);
+    if (error) {
+      if (error.code === "PGRST116") throw new Error("Quadro não encontrado.");
+      throw new Error("Erro ao buscar quadro: " + error.message);
+    }
     return data;
   }
 
   async update(boardId, boardData) {
     const { data, error } = await supabase.from("boards").update(boardData).eq("id", boardId).select().single();
 
-    if (error) throw new Error("Erro ao atualizar quadro: " + error.message);
+    if (error) {
+      if (error.code === "PGRST116") throw new Error("Quadro não encontrado.");
+      throw new Error("Erro ao atualizar quadro: " + error.message);
+    }
     return data;
   }
 
   async delete(boardId) {
-    const { error } = await supabase.from("boards").delete().eq("id", boardId);
+    const { error: boardError } = await supabase.from("boards").select("*").eq("id", boardId).single();
 
-    if (error) throw new Error("Erro ao deletar quadro: " + error.message);
+    if (boardError) {
+      if (boardError.code === "PGRST116") throw new Error("Quadro não encontrado.");
+      throw new Error("Erro ao buscar quadro: " + boardError.message);
+    }
+
+    const { data, error } = await supabase.from("boards").delete().eq("id", boardId);
+    if (error) throw new Error("Erro ao excluir quadro: " + error.message);
+
     return { success: true };
   }
 }

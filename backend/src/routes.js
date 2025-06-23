@@ -10,127 +10,45 @@ const router = Router();
 const authController = new AuthController();
 const taskController = new TaskController();
 const boardController = new BoardController();
-const boardMemberController = new BoardMemberController();
+// const boardMemberController = new BoardMemberController();
 const categoryController = new CategoryController();
 
-export const autenticarToken =
-    authController.autenticarToken.bind(authController);
+export const autenticarToken = authController.autenticarToken.bind(authController);
 
 // Auth
 router.post("/api/register", authController.register.bind(authController));
 router.post("/api/login", authController.login.bind(authController));
 
 // Perfil do usuário logado
-router.get(
-    "/api/me",
-    autenticarToken,
-    authController.getProfile.bind(authController)
-);
-router.put(
-    "/api/me",
-    autenticarToken,
-    authController.updateProfile.bind(authController)
-);
-router.put(
-    "/api/me/password",
-    autenticarToken,
-    authController.updatePassword.bind(authController)
-);
+router.get("/api/me", autenticarToken, authController.getProfile.bind(authController));
+router.put("/api/me", autenticarToken, authController.updateProfile.bind(authController));
+router.put("/api/me/password", autenticarToken, authController.updatePassword.bind(authController));
 
 // Boards (Quadros)
-router.post(
-    "/api/boards",
-    autenticarToken,
-    boardController.create.bind(boardController)
-);
-router.get(
-    "/api/boards",
-    autenticarToken,
-    boardController.list.bind(boardController)
-);
-router.get(
-    "/api/boards/:id",
-    autenticarToken,
-    boardController.get.bind(boardController)
-);
-router.put(
-    "/api/boards/:id",
-    autenticarToken,
-    boardController.update.bind(boardController)
-);
-router.delete(
-    "/api/boards/:id",
-    autenticarToken,
-    boardController.delete.bind(boardController)
-);
+router.post("/api/boards", autenticarToken, boardController.create.bind(boardController));
+router.get("/api/boards", autenticarToken, boardController.list.bind(boardController));
+router.get("/api/boards/:id", autenticarToken, boardController.get.bind(boardController));
+router.put("/api/boards/:id", autenticarToken, boardController.update.bind(boardController));
+router.delete("/api/boards/:id", autenticarToken, boardController.delete.bind(boardController));
 
 // Users-Boards (Adicionar/Remover usuários em quadros)
-router.post(
-    "/api/boards/:boardId/users",
-    boardMemberController.addMember.bind(boardMemberController)
-);
-router.delete(
-    "/api/boards/:boardId/users/:userId",
-    boardMemberController.removeMember.bind(boardMemberController)
-);
-router.get(
-    "/api/boards/:boardId/users",
-    boardMemberController.listMembers.bind(boardMemberController)
-);
+// router.post("/api/boards/:boardId/users", boardMemberController.addMember.bind(boardMemberController));
+// router.delete("/api/boards/:boardId/users/:userId", boardMemberController.removeMember.bind(boardMemberController));
+// router.get("/api/boards/:boardId/users", boardMemberController.listMembers.bind(boardMemberController));
 
 // Categories (Categorias)
-router.post(
-    "/api/boards/:boardId/categories",
-    autenticarToken,
-    categoryController.create.bind(categoryController)
-);
-router.get(
-    "/api/boards/:boardId/categories",
-    autenticarToken,
-    categoryController.listByBoard.bind(categoryController)
-);
-router.get(
-    "/api/categories/:id",
-    autenticarToken,
-    categoryController.get.bind(categoryController)
-);
-router.put(
-    "/api/categories/:id",
-    autenticarToken,
-    categoryController.update.bind(categoryController)
-);
-router.delete(
-    "/api/categories/:id",
-    autenticarToken,
-    categoryController.delete.bind(categoryController)
-);
+router.post("/api/boards/:boardId/categories", autenticarToken, categoryController.create.bind(categoryController));
+router.get("/api/boards/:boardId/categories", autenticarToken, categoryController.listByBoard.bind(categoryController));
+router.get("/api/categories/:id", autenticarToken, categoryController.get.bind(categoryController));
+router.put("/api/categories/:id", autenticarToken, categoryController.update.bind(categoryController));
+router.delete("/api/categories/:id", autenticarToken, categoryController.delete.bind(categoryController));
 
 // Tasks (Tarefas)
-router.post(
-    "/api/boards/:boardId/tasks",
-    autenticarToken,
-    taskController.create.bind(taskController)
-);
-router.get(
-    "/api/boards/:boardId/tasks",
-    autenticarToken,
-    taskController.listByBoard.bind(taskController)
-);
-router.get(
-    "/api/tasks/:id",
-    autenticarToken,
-    taskController.get.bind(taskController)
-);
-router.put(
-    "/api/tasks/:id",
-    autenticarToken,
-    taskController.update.bind(taskController)
-);
-router.delete(
-    "/api/tasks/:id",
-    autenticarToken,
-    taskController.delete.bind(taskController)
-);
+router.post("/api/boards/:boardId/tasks", autenticarToken, taskController.create.bind(taskController));
+router.get("/api/boards/:boardId/tasks", autenticarToken, taskController.listByBoard.bind(taskController));
+router.get("/api/tasks/:id", autenticarToken, taskController.get.bind(taskController));
+router.put("/api/tasks/:id", autenticarToken, taskController.update.bind(taskController));
+router.delete("/api/tasks/:id", autenticarToken, taskController.delete.bind(taskController));
 
 // Comments (Comentários em tarefas)
 // router.post("/api/tasks/:taskId/comments", commentController.create.bind(commentController));

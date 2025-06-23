@@ -24,10 +24,10 @@ export class AuthService {
         if (error || !user) {
             throw new Error("Email ou senha inválidos.");
         }
-
+        
         const token = jwt.sign(
             { id: user.id, email: user.email },
-            process.env.JWT_SECRET || "dev-secret-key-change-in-production"
+            process.env.JWT_SECRET
         );
 
         return { message: "Login realizado com sucesso", token };
