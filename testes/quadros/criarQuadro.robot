@@ -17,7 +17,7 @@ Dado que estou na página inicial do sistema
     Abrir Navegador
     Fazer Login
 E clico no botão "Criar Quadro"
-    Click Button    ${Botao_CriarQuadro}
+    Click Element    id:criarQuadro
 Quando dou um nome para o quadro
     Input Text    ${Campo_Quadro}    Quadro de Teste
 
@@ -25,5 +25,5 @@ E clico no botão "Criar"
     Click Button    ${Botao_Criar}
 
 Então o quadro é criado com sucesso
-    Element Should Contain    xpath=//span[contains(@class,'sidebar-text')]    Quadro de Teste
+    Element Should Contain    xpath=//span[@class='sidebar-text'][contains(.,'Quadro de Teste')]   Quadro de Teste
     Fechar Navegador
