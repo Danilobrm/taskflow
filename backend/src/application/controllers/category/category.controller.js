@@ -61,7 +61,7 @@ export class CategoryController {
         const { id } = req.params;
         const updateData = req.body;
 
-        if (updateData.name && updateData.name.trim() === "") {
+        if (!updateData.name) {
             return res
                 .status(400)
                 .json({ error: "Nome da categoria não pode estar vazio." });
