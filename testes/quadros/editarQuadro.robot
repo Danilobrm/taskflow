@@ -15,10 +15,11 @@ Cenário 01: Editar um Quadro Existente
 
 *** Keywords ***
 Dado que o usuário esteja na página inicial
+    Delay de Execução de teste
     Abrir Navegador
     Fazer Login
 E tenha criado um quadro
-    Verificar se Quadro foi criado
+    Element Should Contain    xpath=(//span[@class='sidebar-text'][contains(.,'Quadro de Teste')])[1]   Quadro de Teste
 E clique no botão de opções do quadro
     Click Element    xpath=//button[@class='board-settings-btn'and contains(.,'⋯')]
 
@@ -32,5 +33,5 @@ Quando clicar no botão "Salvar"
     Click Button    ${Botao_SalvarEdiQuadro}
 
 Então o sistema deve salvar as alterações e redirecionar para a página inicial
-    Element Should Contain    xpath=//div[@class='board-item-content'and contains(.,'📋Quadro de Testes 2')]    Quadro de Testes 2
+    Element Should Contain    xpath=(//span[@class='sidebar-text'][contains(.,'Quadro de Teste')])[1]    Quadro de Testes 2
     Fechar Navegador

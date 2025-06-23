@@ -7,7 +7,7 @@ Delay de Execução de teste
     Set Selenium Speed    0.75s
 
 Abrir Navegador
-    Open Browser    ${Url}    ${Browser}
+    Open Browser    ${Url}    ${Browser}    
     Maximize Browser Window
 
 Fazer Login
@@ -26,7 +26,7 @@ Clicar no Botão "Criar Conta"
     Click Button    ${Botao_CriarConta}
 
 Verificar se Quadro foi criado
-    Element Should Be Visible    xpath=//span[@class='sidebar-text' and contains(., 'Quadro de Teste')]
+    Element Should Be Visible    xpath=//span[@class='sidebar-text'][contains(., 'Quadro de Teste')]
 
 Fechar Navegador
     Close Browser
