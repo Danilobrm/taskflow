@@ -163,7 +163,7 @@ export default function Sidebar({
                             </li>
                         ) : (
                             <li
-                                className="sidebar-item"
+                                className="sidebar-item" id="criarQuadro"
                                 onClick={() => setIsCreatingBoard(true)}
                             >
                                 <span className="sidebar-icon">+</span>

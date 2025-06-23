@@ -25,3 +25,7 @@ reports/
 # Arquivos do sistema
 .DS_Store
 Thumbs.db
+
+#Arquivos de Imagem
+*.png
+*.jpg
